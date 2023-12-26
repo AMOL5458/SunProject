@@ -22,9 +22,14 @@ pipeline {
                 sh '/usr/bin/docker image push amol1701/myproject'
             }
         }
+	stage ('docker pull image') {
+	    steps {
+		sh '/usr/bin/docker image pull amol1701/myproject'
+	    }
+	}
         stage ('docker create service') {
             steps {
-                sh '/usr/bin/docker service create --replicas 2 --name myservice -p 8080:80 amol1701/myproject'
+                sh '/usr/bin/docker container  run -d  --name webcon -p 9090:9000 amol1701/myproject'
             }
         }
     }
