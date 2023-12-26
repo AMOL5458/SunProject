@@ -29,7 +29,7 @@ pipeline {
 	}
         stage ('docker create service') {
             steps {
-                sh '/usr/bin/docker container  run -d  --name webcon -p 9090:9000 amol1701/myproject'
+                sh '/usr/bin/docker container  run -d  --name webcon -p 9090:80 amol1701/myproject'
             }
         }
     }
